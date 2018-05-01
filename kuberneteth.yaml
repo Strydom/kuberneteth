@@ -64,7 +64,7 @@ keystore:
 geth:
   # you can find suitable tags in https://hub.docker.com/r/ethereum/client-go/tags/
   # due to some config file changes in geth it needs to be > 1.8.0
-  version: stable
+  version: v1.8.3
   network:
     # network id (1: mainnet, 3: ropsten, 4: rinkeby ... )
     id: 24101995
