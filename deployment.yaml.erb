@@ -137,6 +137,27 @@ data:
     }
 <% end -%>
 
+<%- if @config["global_loadbalancer"] -%>
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: global-api-web-svc
+  labels:
+    app: kuberneteth
+    tier: backend
+spec:
+  selector:
+    app: kuberneteth
+    tier: backend
+  type: LoadBalancer
+  ports:
+    - name: global-jsonrpc-port
+      protocol: TCP
+      port: 8545
+      targetPort: 8545
+<%- end -%>
+
 <%- @nodes.each do |node| -%>
 <%= set_node_template_vars(node.values.first) -%>
 <%- (0..@replicate).each do |nodeNumber| -%>
