@@ -8,7 +8,6 @@ bootnode:
     NodeP2P_ListenAddr: 30301
     NodeP2P_DiscoveryAddr: 30303
     Node_DataDir: /etc/testnet/bootnode
-global_loadbalancer: false
 # here you can add as many nodes as you like, name and configure them
 nodes:
 - miner:
