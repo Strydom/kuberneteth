@@ -42,8 +42,30 @@ nodes:
       #Dashboard_Port: 8080
       #Dashboard_Refresh: 3000000000
 # keep adding nodes
-# - member:
-# ...
+- member:
+    # the number of extra instances of this node you want to create [0 or more]
+    replicate: 0
+    # [true or false] If true a LoadBalancer will be created with an external facing IP
+    exposed: true
+    # this config values will end up in the k8s manifest directly
+    k8s:
+      # open a port on each node (optional)
+      # if replicate is > 0 these numbers will be incremented for each extra instance
+      # note: if replicate >= 1000 there will be collisions
+      nodePort_rpc: 30000
+      nodePort_ipc: 31000
+      replicas: 1
+    # this config values will alter the geth config toml file which will end up as a ConfigMap in the k8s manifest
+    geth:
+      # if set then metrics will be enabled on the node.
+      metrics: false
+      # this name will be appened by the node replicated number e.g. miner0
+      Node_UserIdent: member
+      Node_DataDir: /etc/testnet/member
+      Node_HTTPPort: 8545
+      Node_WSPort: 8546
+      NodeP2P_ListenAddr: 30301
+      NodeP2P_DiscoveryAddr: 30303
 monitor:
   name: monitor
   # type can be [ClusterIP, NodePort, LoadBalancer]
