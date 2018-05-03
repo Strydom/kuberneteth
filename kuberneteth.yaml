@@ -52,8 +52,8 @@ nodes:
       # open a port on each node (optional)
       # if replicate is > 0 these numbers will be incremented for each extra instance
       # note: if replicate >= 1000 there will be collisions
-      nodePort_rpc: 30000
-      nodePort_ipc: 31000
+      nodePort_rpc: 30100
+      nodePort_ipc: 31100
       replicas: 1
     # this config values will alter the geth config toml file which will end up as a ConfigMap in the k8s manifest
     geth:
