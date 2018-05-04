@@ -365,7 +365,7 @@ spec:
         image: ethereum/client-go:<%= @config["geth"]["version"] %>
         resources:
           requests:
-            memory: "3Gi"
+            memory: "6Gi"
         command: [ "sh" ]
         args:
         - "-cx"
